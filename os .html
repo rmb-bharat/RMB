@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMB | Revolutionary Movement of Bharat</title>
+    <style>
+        :root {
+            --bg-glass: rgba(255, 255, 255, 0.45);
+            --border-glass: rgba(255, 255, 255, 0.6);
+            --text-main: #1c1a27;
+            --text-muted: #5c5970;
+            
+            /* GenZ Pastel Palette */
+            --pastel-pink: #ffd3e8;
+            --pastel-purple: #e2d5ff;
+            --pastel-blue: #d0f4de;
+            --pastel-yellow: #fff5c0;
+            --pastel-orange: #ffe3d1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        body {
+            background: 
+                radial-gradient(at 0% 0%, var(--pastel-pink) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, var(--pastel-purple) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, var(--pastel-blue) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, var(--pastel-yellow) 0px, transparent 50%),
+                #f9f8fc;
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Glassmorphic Navbar */
+        nav {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            padding: 16px 32px;
+            border-radius: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, #ff6b8b, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 6px 14px;
+            border-radius: 50px;
+            border: 1px solid var(--border-glass);
+        }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            padding: 60px 20px 80px 20px;
+        }
+
+        .badge {
+            background: #ffffff;
+            border: 1px solid var(--border-glass);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            line-height: 1.05;
+            font-weight: 900;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        h1 span {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        .tagline {
+            font-size: 1.35rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 24px auto 0 auto;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* Bento Grid Layout */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .bento-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            padding: 40px;
+            border-radius: 32px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.03);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.06);
+        }
+
+        /* Specific card sizing for asymmetry */
+        .card-large {
+            grid-column: span 2;
+            background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255, 211, 232, 0.3));
+        }
+
+        .card-medium {
+            grid-column: span 1;
+            background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(226, 213, 255, 0.3));
+        }
+
+        .card-full {
+            grid-column: span 3;
+            background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(208, 244, 222, 0.2));
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+        }
+
+        .bento-card p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Custom Bullet List for Goals */
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .goal-item {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 24px;
+            border-radius: 20px;
+            border: 1px solid var(--border-glass);
+        }
+
+        .goal-item h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .goal-item h3::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--text-main);
+            border-radius: 50%;
+        }
+
+        .goal-item p {
+            font-size: 1rem;
+        }
+
+        /* GenZ Pill Buttons */
+        .btn {
+            display: inline-block;
+            background: var(--text-main);
+            color: #ffffff;
+            padding: 16px 36px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--text-main);
+            border-color: var(--text-main);
+            transform: scale(1.03);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .card-large, .card-medium, .card-full { grid-column: span 1; }
+            .goals-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            h1 span { font-size: 1.6rem; }
+            h2 { font-size: 1.8rem; }
+            body { padding: 12px; }
+            nav { padding: 12px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Interactive Sticky-feel Navbar -->
+        <nav>
+            <div class="logo">RMB</div>
+            <div class="nav-tag">???? Secular × Youth</div>
+        </nav>
+
+        <!-- Dynamic Header -->
+        <header>
+            <div class="badge">? The Blueprint for Tomorrow</div>
+            <h1>Revolutionary Movement of Bharat<span>Revolutionary Movement of Bharat</span></h1>
+            <p class="tagline">A political reset built by the youth, centered on data, inclusion, and progressive balance.</p>
+        </header>
+
+        <!-- Bento Grid Layout -->
+        <main class="bento-grid">
+            
+            <!-- Card 1: Vision (Large) -->
+            <div class="bento-card card-large">
+                <div>
+                    <h2>Our Vision</h2>
+                    <p>RMB is a total paradigm shift. We are building a hyper-modern, strictly secular state tailored for the next generation of Indians. We replace identity politics with logic, scientific temper, and digital innovation. No labels, no barriers—just pure equity for every young voice.</p>
+                </div>
+            </div>
+
+            <!-- Card 2: Spectrum (Medium) -->
+            <div class="bento-card card-medium">
+                <div>
+                    <h2>Center-Left, Centered on Reality</h2>
+                    <p>We lean progressive on social rights, climate tech, and public welfare, but we keep our economics practical. We back creators, green startups, and micro-entrepreneurs to fund the future.</p>
+                </div>
+            </div>
+
+            <!-- Card 3: Goals (Full Width Asymmetrical) -->
+            <div class="bento-card card-full">
+                <div>
+                    <h2>The Core Agenda</h2>
+                    <div class="goals-grid">
+                        <div class="goal-item">
+                            <h3>Youth in Power</h3>
+                            <p>Lowering institutional age limits to put actual digital natives into legislative seats.</p>
+                        </div>
+                        <div class="goal-item">
+                            <h3>Radical Secularism</h3>
